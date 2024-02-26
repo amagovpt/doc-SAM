@@ -1,0 +1,31 @@
+<soap:Envelope xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <soap:Header>
+    <wsa:Action>http://www.mj.itij.pt/SCV/AMPedidoAlteracaoMorada</wsa:Action>
+    <wsa:MessageID>574878da-01a3-49c1-a617-8bf415e6817c</wsa:MessageID>
+    <wsa:To>http://172.31.220.170/SAMService/SAMService.svc</wsa:To>
+  </soap:Header>
+  <soap:Body>
+    <n3:AMPedidoAlteracaoMorada xmlns:n3="http://www.cartaodocidadao.pt/schemas/AlteracaoMorada/2007/05" xmlns:end="http://www.interop.gov.pt/schemas/TiposDados/2007/05/Endereco">
+      <n3:IdProcessoAm>7e7564fd-ab84-4602-861b-fd132db99530</n3:IdProcessoAm>
+      <n3:NumeroDocumentoTitular>000000001ZX9</n3:NumeroDocumentoTitular>
+      <n3:NifTitular>00000000</n3:NifTitular>
+      <n3:Morada>
+        <end2:Portuguesa xmlns:end2="http://www.cartaodocidadao.pt/schemas/TiposDados/2007/05/Endereco">
+          <end2:Localidade>Galegos (São Martinho) </end2:Localidade>
+          <end2:DistritoConcelhoFreguesia>030272</end2:DistritoConcelhoFreguesia>
+          <end2:ViaTipo>R</end2:ViaTipo>
+          <end2:ViaDesignacao>Passal</end2:ViaDesignacao>
+          <end2:Porta>3</end2:Porta>
+          <end2:Lugar>Igreja</end2:Lugar>
+          <end2:CodigoPostalPortugues>
+            <end2:CodigoPostal>4750</end2:CodigoPostal>
+            <end2:AreaFuncional>485</end2:AreaFuncional>
+            <end2:LocalidadePostal>GALEGOS (SÃO MARTINHO)</end2:LocalidadePostal>
+          </end2:CodigoPostalPortugues>
+        </end2:Portuguesa>
+        <end2:Versao xmlns:end2="http://www.cartaodocidadao.pt/schemas/TiposDados/2007/05/Endereco">202001</end2:Versao>
+        <end2:Estado xmlns:end2="http://www.cartaodocidadao.pt/schemas/TiposDados/2007/05/Endereco">Temporario</end2:Estado>
+      </n3:Morada>
+    </n3:AMPedidoAlteracaoMorada>
+  </soap:Body>
+</soap:Envelope>

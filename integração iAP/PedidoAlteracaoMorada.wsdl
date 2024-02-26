@@ -1,0 +1,63 @@
+<definitions 
+	xmlns="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:tns="http://www.mj.itij.pt/SCV/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:nsAlt="http://www.cartaodocidadao.pt/schemas/AlteracaoMorada/2007/05"
+	targetNamespace="http://www.mj.itij.pt/SCV/" 
+	name="DynamicGatewayService">	
+	
+	<types>
+		
+		<xs:schema 
+		xmlns:nsCid="http://www.cartaodocidadao.pt/schemas/TiposDados/2007/05/Endereco" 
+		xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		elementFormDefault="qualified"
+		targetNamespace="http://www.cartaodocidadao.pt/schemas/AlteracaoMorada/2007/05">
+		
+			<xs:import namespace="http://www.cartaodecidadao.pt/tipos/comum/scv" schemaLocation="Morada.xsd"/>
+			
+			<xs:element name="AMPedidoAlteracaoMorada">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IdProcessoAm" type="xs:string"/>
+						<xs:element name="NumeroDocumentoTitular" type="xs:string"/>
+						<xs:element name="NifTitular" type="xs:string"/>
+						<xs:element name="IdCidadaoResponsavel" type="nsCid:NIC" minOccurs="0"/>
+						<xs:element name="Morada" type="nsCid:Morada"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+		
+	</types>
+	
+	<message name="AMPedidoAlteracaoMorada">
+		<part name="AMPedidoAlteracaoMoradaParameters" element="nsAlt:AMPedidoAlteracaoMorada"/>
+	</message>
+
+	<portType name="AMPedidoAlteracaoMoradaType">
+		<operation name="AMPedidoAlteracaoMorada">
+			<input message="tns:AMPedidoAlteracaoMorada"/>
+		</operation>
+	</portType>
+	
+	<binding name="AMPedidoAlteracaoMoradaPortBinding" type="tns:AMPedidoAlteracaoMoradaType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsaw:UsingAddressing/>
+		<operation name="AMPedidoAlteracaoMorada">
+			<soap:operation soapAction="http://www.mj.itij.pt/SCV/AMPedidoAlteracaoMorada"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+		</operation>
+	</binding>
+	
+	<service name="AMPedidoAlteracaoMoradaService">
+		<port name="AMPedidoAlteracaoMoradaPort" binding="tns:AMPedidoAlteracaoMoradaPortBinding">
+			<soap:address location="http://10.50.217.3/Portal/"/>
+		</port>
+	</service>
+
+</definitions>

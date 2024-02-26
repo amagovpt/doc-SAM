@@ -1,0 +1,79 @@
+<xs:schema 
+	xmlns:tns="http://www.cartaodocidadao.pt/schemas/TiposDados/2007/05/Endereco" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified" 
+	version="1.0" 
+	targetNamespace="http://www.cartaodocidadao.pt/schemas/TiposDados/2007/05/Endereco">
+	
+	<xs:element name="NIC" type="tns:NIC"/>
+	<xs:complexType name="NIC">
+		<xs:sequence>
+			<xs:element name="Numero" type="xs:string"/>
+			<xs:element name="DigitoControlo" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="Morada">
+		<xs:sequence>
+			<xs:element name="Portuguesa" type="tns:MoradaPortuguesa" minOccurs="0"/>
+			<xs:element name="Estrangeira" type="tns:MoradaEstrangeira" minOccurs="0"/>
+			<xs:element name="Versao" type="xs:string"/>
+			<xs:element name="Estado" type="tns:EstadoMorada"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="MoradaBase">
+		<xs:sequence>
+			<xs:element name="Localidade" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="CodigoPostalPortugues">
+		<xs:sequence>
+			<xs:element name="CodigoPostal" type="xs:string"/>
+			<xs:element name="AreaFuncional" type="xs:string" minOccurs="0"/>
+			<xs:element name="LocalidadePostal" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="MoradaPortuguesa">
+		<xs:complexContent>
+			<xs:extension base="tns:MoradaBase">
+				<xs:sequence>
+					<xs:element name="DistritoConcelhoFreguesia" type="xs:string"/>
+					<xs:element name="ViaTipo" type="xs:string" minOccurs="0"/>
+					<xs:element name="ViaDesignacao" type="xs:string" minOccurs="0"/>
+					<xs:element name="EdificioTipo" type="xs:string" minOccurs="0"/>
+					<xs:element name="Porta" type="xs:string" minOccurs="0"/>
+					<xs:element name="Andar" type="xs:string" minOccurs="0"/>
+					<xs:element name="Lado" type="xs:string" minOccurs="0"/>
+					<xs:element name="Lugar" type="xs:string" minOccurs="0"/>
+					<xs:element name="CodigoPostalPortugues" type="tns:CodigoPostalPortugues"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="MoradaEstrangeira">
+		<xs:complexContent>
+			<xs:extension base="tns:MoradaBase">
+				<xs:sequence>
+					<xs:element name="Pais" type="xs:string"/>
+					<xs:element name="Endereco" type="xs:string"/>
+					<xs:element name="Cidade" type="xs:string" minOccurs="0"/>
+					<xs:element name="Regiao" type="xs:string" minOccurs="0"/>
+					<xs:element name="CodigoPostal" type="xs:string"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="EstadoMorada">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Securizado"/>
+			<xs:enumeration value="Temporario"/>
+			<xs:enumeration value="Indeterminado"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>
